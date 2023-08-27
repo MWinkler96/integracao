@@ -202,13 +202,14 @@ namespace idAccess_Rest
             ServicePointManager.Expect100Continue = false;
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create("http://" + IPAddress + "/" + uri);
+                var request = (HttpWebRequest)WebRequest.Create("http://" + IPAddress + "/new_user_identified.fcgi" );
                 request.ContentType = "application/json";
                 request.Method = "POST";
 
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
                     streamWriter.Write(data);
+                  //  {"login":"admin","password":"admin"}
                 }
 
                 var response = (HttpWebResponse)request.GetResponse();

@@ -16,7 +16,7 @@ module.exports = (request, response) => {
     if (lastPathname === 'push') {
 
         //code
-
+console.log("aqui psuh ");
         return;
     }
 
@@ -25,7 +25,8 @@ module.exports = (request, response) => {
             response: JSON.parse(request.body.response)
         };
 
-        console.log('Body content;\n'+ JSON.stringify(requestBody, null, 2));
+        console.log('Body content push;\n'+ JSON.stringify(requestBody, null, 2));
+
 
         return;
     }

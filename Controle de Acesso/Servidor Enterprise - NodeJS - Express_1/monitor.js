@@ -15,14 +15,16 @@ module.exports = (request, response) => {
     const lastPathname = pathUtils.extractLastPathname(request.path);
 
     if (pathUtils.notHasPath(lastPathname, paths)) {
+console.log(paths + " monitor paths");
         return;
     }
 
-    console.log('Body content:\n' + JSON.stringify(request.body, null, 2));
+    console.log('Body content monitor:\n' + JSON.stringify(request.body, null, 2));
+ 
 
     if (lastPathname === 'dao') {
         //code
-
+console.log("dao");
         return;
     }
 

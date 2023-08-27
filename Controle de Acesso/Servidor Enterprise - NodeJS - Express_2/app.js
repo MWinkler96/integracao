@@ -208,7 +208,7 @@ app.post('/fingerprint_create.fcgi', function (req, res) {
 })
 
 
-var server = app.listen(8000, function () {
+var server = app.listen(8000,"192.168.1.94", function () {
    var host = server.address().address
    var port = server.address().port
 

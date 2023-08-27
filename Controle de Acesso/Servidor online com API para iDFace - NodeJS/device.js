@@ -18,6 +18,7 @@ class Device
             });
             this.session = response.data.session;
             console.log("login success: ", response.data);
+console.log(this.session)
         } catch (error) {
             console.log("Error performing request: ", error.data);
         }

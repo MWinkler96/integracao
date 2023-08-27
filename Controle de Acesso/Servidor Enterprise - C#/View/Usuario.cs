@@ -74,8 +74,8 @@ namespace idAccess_Rest
             }
             else if (resultado == DialogResult.Yes)
             {
-                device.sendJson("remote_enroll","{\"type\":\"card\",\"user_id\":" + txtId.Text + ",\"save\":true}");
-                //device.sendJson("remote_enroll","{\"type\":\"biometry\",\"user_id\":" + txtId.Text + ",\"save\":true}");
+                //device.sendJson("remote_enroll","{\"type\":\"card\",\"user_id\":" + txtId.Text + ",\"save\":true}");
+                 device.sendJson("remote_enroll","{\"type\":\"face\",\"user_id\":" + txtId.Text + ",\"save\":true}");
             }
         }
     }

@@ -7,13 +7,14 @@ const monitor = require('./monitor');
 const event = require('./event');
 
 const app = express();
-const port = 5000;
+const port = 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+//console.log(bodyParser.json() + "nody parser");
 app.all('/**', (request, response) => {
     console.log('\n--- NEW REQUEST @ ' + moment().format('DD/MM/YYYY kk:mm:ss') + ' ---');
     console.log('Path -> ' + request.path);
@@ -21,11 +22,13 @@ app.all('/**', (request, response) => {
     console.log('Content type -> ' + request.get('content-type'));
     console.log('Body length -> ' + request.get('content-length'));
 
-    push(request, response);
-    monitor(request, response);
+    //push(request, response);
+   // monitor(request, response);
+request.path = "holw";
     event(request, response);
+//console.log(request)
 });
 
-app.listen(port, () => {
+app.listen(port, "192.168.1.94", () => {
     console.log(`Server started @ ${port}`);
 });

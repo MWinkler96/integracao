@@ -39,7 +39,7 @@ after an identification attempt event.
 var access_answer = {
     result: {
         event: 7, 
-        user_name: 'John Doe',
+        user_name: 'eae',
         user_id: 1000,
         user_image: true, 
         portal_id: 1,
@@ -93,6 +93,7 @@ app.post('/api/notifications/telemetry', function (req, res) {
     console.log("Serial (query string): " + req.query.serial);
     console.log("Version (query string): " + req.query.version);
     console.log(req.body);
+ console.log("telemetry " +  acces_answer);
     res.json(access_answer);
   })
 
@@ -123,6 +124,7 @@ app.post('/new_user_id_and_password.fcgi', function (req, res) {
     console.log("Data: ");
     console.log("Length: " + req.body.length);
     console.log(req.body);
+    console.log("new_user_id_and_password" +  access_answer);
     res.json(access_answer);
 })
 
@@ -133,6 +135,7 @@ app.post('/new_user_identified.fcgi', function (req, res) {
     console.log("Data: ");
     console.log("Length: " + req.body.length);
     console.log(req.body);
+    console.log("new_user_identified "+ JSON.stringify(access_answer));
     res.json(access_answer);
   })
 
@@ -167,6 +170,7 @@ app.post('/api/notifications/dao', function (req, res) {
     console.log(req.body);
     console.log(req.body.object_changes[0].values);
     res.send();
+console.log("/api/notifications/dao");
 })
 
 // Notification door
@@ -307,7 +311,7 @@ app.get('/user_get_image.fcgi', function (req, res) {
 })
 
 // Device IP address
-var deviceIp = '192.168.0.129';
+var deviceIp = '192.168.1.91';
 
 /*
 ***************************
@@ -326,9 +330,10 @@ async function runOnline () {
     await device.setOnline(5);
     await device.enableOnlinePRO();
 
-    var server = app.listen(8000, function () {
+    var server = app.listen(8000, "192.168.1.94", function () {
         var host = server.address().address
         var port = server.address().port
+console.log("host runOnline " + host);
         console.log("Example app listening at http://%s:%s", host, port);
     });
 }
@@ -359,6 +364,7 @@ async function run () {
         await device.createUsers(ids);
         await device.setImageListSamePhoto(ids, photo);
     }
+console.log("assdas");
 }
 
 // Destroy images from all users
@@ -390,10 +396,11 @@ async function loadUserTest () {
 async function runRemoteEnroll() {
     let Device = require('./device');
     let device = new Device(deviceIp);
-
-    var server = app.listen(8000, function () { 
+console.log("runRemoteEnroll deviceIP " + deviceIp)
+    var server = app.listen(8000, "192.168.1.94", function () { 
         var host = server.address().address
         var port = server.address().port
+console.log("host runremotenroll " + host);
         console.log("Example app listening at http://%s:%s", host, port);
     });
 
@@ -408,9 +415,10 @@ async function cancelRemoteEnroll() {
     let Device = require('./device');
     let device = new Device(deviceIp);
 
-    var server = app.listen(8000, function () { 
+    var server = app.listen(8000, "192.168.1.94", function () { 
         var host = server.address().address
         var port = server.address().port
+console.log("host cancelRemoteEnroll " + host);
         console.log("Example app listening at http://%s:%s", host, port);
     });
 

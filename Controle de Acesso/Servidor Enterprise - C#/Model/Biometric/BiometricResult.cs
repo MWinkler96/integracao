@@ -81,7 +81,7 @@ namespace idAccess_Rest
             bio.user_id = 1;
             bio.user_name = "Mauro";
             bio.portal_id = 1;
-            bio.user_image = false;
+            bio.user_image = true;
             Actions ac = new Actions();
             ac.action = "catra";
             ac.parameters = "allow=clockwise";

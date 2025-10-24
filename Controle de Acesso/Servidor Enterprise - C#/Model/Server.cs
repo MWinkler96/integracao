@@ -52,6 +52,7 @@ namespace idAccess_Rest
             Form1.Log(new string[1] { "identificação por biometria detectada (getImage) : " + width + " x " + height  });
             return get.sendMessage();
         }
+
         public BiometricImageResult UserTemplate(string session, string device_id, string identifier_id, Stream stream)
         {
             var result = get.ResultIdentification(stream);
@@ -105,12 +106,21 @@ namespace idAccess_Rest
             }
             return get.sendMessage();
         }
+ 
 
         public DeviceIsAliveResult getDeviceIsAlive(string session, Stream stream)
         {
             var result =  get.ResultIdentification(session, stream);
             Form1.Log(new string[2] {"Detecção da Contingência, restaurando comunicação com o Servidor.", "\nResult Logs: "+ result});
             return get.sendDevice();
+        }
+
+      public BiometricImageResult getFaceCreate(string session, string device_id, Stream stream)
+        {
+            var result = get.ResultIdentification(stream);
+            Form1.Log(new string[2] {"Detecção da Contingência, restaurando comunicação com o Servidor.", "\nResult Logs: "+ result});
+              System.Diagnostics.Debug.WriteLine(result);
+            return get.sendMessage();
         }
     }
 }

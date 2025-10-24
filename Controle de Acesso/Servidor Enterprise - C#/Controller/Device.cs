@@ -106,7 +106,7 @@ namespace idAccess_Rest
                 binding.MaxBufferSize = 2147483647;
                 binding.MaxBufferPoolSize = 2147483647;
 
-                WebServiceHost host = new WebServiceHost(typeof(Server), new Uri("http://localhost:8000/"));
+                WebServiceHost host = new WebServiceHost(typeof(Server), new Uri("http://localhost:8081/"));
                 ServiceEndpoint ep = host.AddServiceEndpoint(typeof(IServer), binding, "");
                 ServiceDebugBehavior sdb = host.Description.Behaviors.Find<ServiceDebugBehavior>();
                 sdb.HttpHelpPageEnabled = false;
@@ -141,7 +141,7 @@ namespace idAccess_Rest
                             "\"online\" : \"" + (isOnline ? 1 : 0) + "\"," +
 
                             "\"local_identification\" : \"1\"" + /* se estiver com zero chama as funções "new_card" e " UserTemplate" */
-                                                                 /* se estiver com valor 1 chama a função "UserIdentified", na qual já vem o id do usuário no caso de biometria */
+                                                                 /* si tiene valor 1 llama a la función "UserIdentified", que ya contiene el id del usuario en el caso de la biometría */
 
                             "}" +
                         "}"
@@ -202,7 +202,7 @@ namespace idAccess_Rest
             ServicePointManager.Expect100Continue = false;
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create("http://" + IPAddress + "/new_user_identified.fcgi" );
+                var request = (HttpWebRequest)WebRequest.Create("http://" + IPAddress + "/" + uri );
                 request.ContentType = "application/json";
                 request.Method = "POST";
 

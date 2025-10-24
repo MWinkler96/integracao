@@ -25,7 +25,7 @@ namespace idAccess_Rest.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ip_terminal = txtTerminal.Text;
+            ip_terminal = "192.168.1.91:8081";
             device = new Device(ip_terminal,ip_server);
             bool success = true;
             Form1.Log(device.CadastrarNoSevidor(out success));
@@ -38,7 +38,7 @@ namespace idAccess_Rest.View
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    ip_server = ip.ToString() + ":8000";
+                    ip_server = ip.ToString() + ":8081";
                     return;
                 }
             }

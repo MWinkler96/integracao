@@ -68,7 +68,7 @@
             this.txtLogs.Multiline = true;
             this.txtLogs.Name = "txtLogs";
             this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLogs.Size = new System.Drawing.Size(450, 450);
+            this.txtLogs.Size = new System.Drawing.Size(850, 850);
             this.txtLogs.TabIndex = 6;
             // 
             // menuStrip1
@@ -231,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 560);
+            this.ClientSize = new System.Drawing.Size(875, 960);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtLogs);
             this.Controls.Add(this.label2);

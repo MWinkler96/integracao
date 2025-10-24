@@ -26,8 +26,7 @@ namespace idAccess_Rest
             device = new Device(new Util().GetIpTerminal(),new Util().GetIpServer());
             List<string> response = new List<string>();
             response.Add("Cadastrando novo usuário");
-
-            try
+  try
             {
                 // checar se já existe usuário registrado com o ID especificado
                 Dictionary<string, string>[] list = device.ListObjects("{\"object\":\"users\"}");
@@ -40,10 +39,10 @@ namespace idAccess_Rest
                         break;
                     }
                 }
-                device.sendJson("create_objects","{" +
+             device.sendJson("create_objects","{" +
                         "\"object\" : \"users\"," +
                         "\"values\" : [{" +
-                                "\"id\" :" + txtId.Text + "," +
+                                 "\"id\" :" + txtId.Text + "," +
                                 "\"name\" :\""+ txtUser.Text+"\"," +
                                 "\"registration\" : \"" + txtMatricula.Text + "\"" +
                             "}]" +
@@ -75,7 +74,12 @@ namespace idAccess_Rest
             else if (resultado == DialogResult.Yes)
             {
                 //device.sendJson("remote_enroll","{\"type\":\"card\",\"user_id\":" + txtId.Text + ",\"save\":true}");
-                 device.sendJson("remote_enroll","{\"type\":\"face\",\"user_id\":" + txtId.Text + ",\"save\":true}");
+            //    device.sendJson("remote_enroll","{\"type\":\"face\",\"user_id\":" + txtId.Text + ",\"save\":true}");
+           // device.sendJson("remote_enroll","{\"type\":\"face\",\"registration \":" + txtId.Text + ",\"save\":false,\"sync\":false}"); create_Face
+           device.sendJson("remote_enroll","{\"type\":\"face\",\"user_id\":" + txtId.Text + ",\"save\":true,\"registration \":\"" + txtMatricula.Text + "\",\"sync\":true}");
+               
+
+
             }
         }
     }
